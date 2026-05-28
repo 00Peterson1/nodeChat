@@ -1,20 +1,41 @@
 const net = require("node:net");
 
+const readLine = require("readline");
+
+const rl = readLine.createInterface(
+
+    {
+        input: process.stdin,
+        output :process.stdout
+    }
+)
+
 const client = net.createConnection({
-    "port": 2000,
+    "port": 3500,
     "host": "127.0.0.1"
 });
 
 client.on("connect", () => {
-    console.log("Connected to the Server");
+    console.log("Connected to the chat");
 
-    client.write("Hello Server 000000001");
+    askMessage();
+
+    
 });
 
 client.on("data", (chunk)=>{
-    console.log(chunk.toString())
+    console.log("\n" + chunk.toString())
+    askMessage();
 })
 
 client.on("end", ()=>{
-    console.log("Donneeeeeee")
-});
+    console.log("Disconnected from server");
+
+})
+function askMessage() {
+    rl.question("You:", (message)=>{
+        client.write(message);
+    })
+
+}
+

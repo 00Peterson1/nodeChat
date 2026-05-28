@@ -1,17 +1,34 @@
 const net = require("net");
-
+ const clients = [];
 const server = net.createServer(
     (socket) => {
-        socket.on("data", chunk => {
-            console.log("From Client")
-            console.log(chunk.toString());
-        })
-        socket.write("Hello, Client!")
+        clients.push(socket);
 
+        socket.on("data", (chunk)=> {
+            const message = chunk.toString();
+            console.log(message);
+
+            clients.forEach(
+                (client) => {
+                    client.write(message)
+                }
+            )
+
+
+            
+        })
         socket.on("end", () => {
-            console.log("Receiveddddd")
-        })
-    }
-)
+                console.log("Client Disconnected!");
 
-server.listen(2000)
+                const index = clients.indexOf(socket);
+
+                if(index !== -1 ) {
+                    clients.splice(index, 1)
+
+                }
+            })
+
+    }, () => {
+        console.log("[From Server]")
+    }
+).listen(3500)
