@@ -11,7 +11,7 @@ const rl = readLine.createInterface(
 )
 
 const client = net.createConnection({
-    "port": 3500,
+    "port": 3509,
     "host": "127.0.0.1"
 });
 

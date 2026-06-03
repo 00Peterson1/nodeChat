@@ -3,6 +3,7 @@ const net = require("net");
 const server = net.createServer(
     (socket) => {
         clients.push(socket);
+        console.log(socket)
 
         socket.on("data", (chunk)=> {
             const message = chunk.toString();
@@ -31,4 +32,4 @@ const server = net.createServer(
     }, () => {
         console.log("[From Server]")
     }
-).listen(3500)
+).listen(3509)
