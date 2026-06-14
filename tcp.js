@@ -32,4 +32,4 @@ const server = net.createServer(
     }, () => {
         console.log("[From Server]")
     }
-).listen(3509)
+).listen(3509);
