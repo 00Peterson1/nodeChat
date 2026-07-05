@@ -3,3 +3,4 @@
 
 
 Official tasks page 
+Daily updates 
