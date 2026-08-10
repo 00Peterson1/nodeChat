@@ -11,7 +11,7 @@ const open = fs.open(pathfile, "r", (err, data)=> {
     }
     console.log(data);
 
-
+gg
     const buffer = Buffer.alloc(400);
     fs.read(data, buffer,0, 400 ,0 ,(err, bytesRead, buffer)=>{
         if(err){
