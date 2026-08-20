@@ -1,1 +1,1 @@
-https a protocol to use for
+https a protocol to use for website security
