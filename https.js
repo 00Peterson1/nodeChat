@@ -1,1 +1,1 @@
-https a protocol
+https a protocol to use
